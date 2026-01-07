@@ -1,0 +1,27 @@
+package com.microservices.aggregator.exception;
+
+/**
+ * Exception thrown when a microservice is unavailable or unresponsive
+ */
+public class ServiceUnavailableException extends RuntimeException {
+    
+    private static final long serialVersionUID = 1L;
+    private String serviceName;
+
+    public ServiceUnavailableException(String message) {
+        super(message);
+    }
+
+    public ServiceUnavailableException(String serviceName, String message) {
+        super(String.format("Service %s is unavailable: %s", serviceName, message));
+        this.serviceName = serviceName;
+    }
+
+    public ServiceUnavailableException(String message, Throwable cause) {
+        super(message, cause);
+    }
+
+    public String getServiceName() {
+        return serviceName;
+    }
+}
